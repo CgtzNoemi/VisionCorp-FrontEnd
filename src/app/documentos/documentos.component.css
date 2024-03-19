@@ -1,0 +1,53 @@
+#alerta {
+    display: none; 
+}
+
+#alerta2 {
+    display: none; 
+}
+
+.regresar {
+    background-color: #E9F6F9;
+}
+
+.regresar:hover{
+    background-color: #ddf3f8;
+}
+
+.imagen {
+    width: 60%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.tarjeta {
+    border-style: dashed;
+    border-width: 3px;
+}
+
+.btn1 {
+    background-color: #1B1E3B; 
+    border: 2px solid #1B1E3B;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn1:hover{
+    background-color: #30356c;
+    border: 2px solid #30356c;
+}
+
+.clase {
+    cursor: pointer;
+}
+
+.titulo {
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+

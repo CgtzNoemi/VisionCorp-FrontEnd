@@ -1,0 +1,147 @@
+<app-barra-nav></app-barra-nav>
+
+<div class="m-3">
+    <button class="btn regresar" routerLink="/lista-usuarios">
+        <div class="d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+            </svg>
+            <p class="m-0">Regresar al listado</p>
+        </div>
+    </button>
+</div>
+<div class="container-sm mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="alert alert-info">
+                El botón para editar el registro se habilitará solo si todos los campos del formulario se completan correctamente.
+            </div>
+            <div class="card p-4 rounded">
+                <div class="d-flex justify-content-center mb-2">
+                    <h2>Datos de registro</h2>
+                </div>
+                <form (ngSubmit)="editarEmpleado()" [formGroup]="formulario">
+                    <div *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)" class="alert alert-danger">
+                        Por favor, completa correctamente todos los campos del formulario.
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" formControlName="Nombre" class="form-control" required>
+                            <div class="pt-1"
+                                *ngIf="formulario.get('Nombre')?.invalid && (formulario.get('Nombre')?.dirty || formulario.get('Nombre')?.touched)">
+                                <div *ngIf="formulario.get('Nombre')?.hasError('required')" class="alert alert-danger">El nombre del
+                                    empleado es obligatorio.</div>
+                                <div *ngIf="formulario.get('Nombre')?.hasError('minlength')" class="alert alert-danger">El nombre
+                                    debe tener al menos 3 caracteres.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" id="apellido" formControlName="Apellido" class="form-control" required>
+                            <div class="pt-1"
+                                *ngIf="formulario.get('Apellido')?.invalid && (formulario.get('Apellido')?.dirty || formulario.get('Apellido')?.touched)">
+                                <div *ngIf="formulario.get('Apellido')?.hasError('required')" class="alert alert-danger">El apellido
+                                    del empleado es obligatorio.</div>
+                                <div *ngIf="formulario.get('Apellido')?.hasError('minlength')" class="alert alert-danger">El
+                                    apellido debe tener al menos 3 caracteres.</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="edad">Edad:</label>
+                            <input type="number" id="edad" formControlName="Edad" class="form-control" required>
+                            <div class="pt-1"
+                                *ngIf="formulario.get('Edad')?.invalid && (formulario.get('Edad')?.dirty || formulario.get('Edad')?.touched)">
+                                <div *ngIf="formulario.get('Edad')?.hasError('required')" class="alert alert-danger">La edad es
+                                    obligatoria.</div>
+                                <div *ngIf="formulario.get('Edad')?.hasError('pattern')" class="alert alert-danger">La edad debe
+                                    tener dos dígitos</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="correoElectronico">Correo Electrónico:</label>
+                            <input type="email" id="correoElectronico" formControlName="correoElectronico" class="form-control"
+                                required>
+                            <div class="pt-1"
+                                *ngIf="formulario.get('correoElectronico')?.invalid && (formulario.get('correoElectronico')?.dirty || formulario.get('correoElectronico')?.touched)">
+                                <div *ngIf="formulario.get('correoElectronico')?.hasError('required')" class="alert alert-danger">El
+                                    correo electrónico es obligatorio.</div>
+                                <div *ngIf="formulario.get('correoElectronico')?.hasError('email')" class="alert alert-danger">El
+                                    correo electrónico no es válido.</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="telefono">Teléfono:</label>
+                            <input type="tel" id="telefono" formControlName="Telefono" class="form-control" pattern="\d{10}"
+                                required>
+                            <div class="pt-1"
+                                *ngIf="formulario.get('Telefono')?.invalid && (formulario.get('Telefono')?.dirty || formulario.get('Telefono')?.touched)">
+                                <div *ngIf="formulario.get('Telefono')?.hasError('required')" class="alert alert-danger">El teléfono
+                                    es obligatorio.</div>
+                                <div *ngIf="formulario.get('Telefono')?.hasError('pattern')" class="alert alert-danger">El teléfono
+                                    debe de tener 10 dígitos.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="departamento">Departamento:</label>
+                            <select id="departamento" formControlName="Departamento" class="form-control" required>
+                                <option value="" disabled selected>Selecciona un departamento</option>
+                                <option value="Finanzas">Finanzas</option>
+                                <option value="Legal">Legal</option>
+                                <option value="Marketing">Marketing</option>
+                            </select>
+                            <div class="pt-1" *ngIf="formulario.get('Departamento')?.invalid && (formulario.get('Departamento')?.dirty || formulario.get('Departamento')?.touched)">
+                                <div *ngIf="formulario.get('Departamento')?.hasError('required')" class="alert alert-danger">El departamento es obligatorio.</div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="puesto">Puesto:</label>
+                            <select id="puesto" formControlName="Puesto" class="form-control" required>
+                                <option value="" disabled selected>Selecciona un puesto</option>
+                                <option value="Contador Senior">Contador Senior</option>
+                                <option value="Analista Financiero">Analista Financiero</option>
+                                <option value="Especialista en Impuestos">Especialista en Impuestos</option>
+                                <option value="Gestor de Tesorería">Gestor de Tesorería</option>
+                                <option value="Abogado Principal">Abogado Principal</option>
+                                <option value="Especialista en Propiedad Intelectual">Especialista en Propiedad Intelectual</option>
+                                <option value="Especialista en Contratos">Especialista en Contratos</option>
+                                <option value="Abogado de Cumplimiento">Abogado de Cumplimiento</option>
+                                <option value="Abogado de Litigios">Abogado de Litigios</option>
+                                <option value="Director de Marketing">Director de Marketing</option>
+                                <option value="Especialista en Estrategia de Contenidos">Especialista en Estrategia de Contenidos</option>
+                                <option value="Especialista en SEO/SEM">Especialista en SEO/SEM</option>
+                                <option value="Gerente de Eventos">Gerente de Eventos</option>
+                                <option value="Analista de Investigación de Mercado">Analista de Investigación de Mercado</option>
+                            </select>
+                            <div class="pt-1" *ngIf="formulario.get('Puesto')?.invalid && (formulario.get('Puesto')?.dirty || formulario.get('Puesto')?.touched)">
+                                <div *ngIf="formulario.get('Puesto')?.hasError('required')" class="alert alert-danger">El puesto es obligatorio.</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="fechaIngreso">Fecha de Ingreso:</label>
+                            <input type="date" id="fechaIngreso" formControlName="FechaIngreso" class="form-control" required>
+                            <div class="pt-1" *ngIf="formulario.get('FechaIngreso')?.invalid && (formulario.get('FechaIngreso')?.dirty || formulario.get('FechaIngreso')?.touched)">
+                                <div *ngIf="formulario.get('FechaIngreso')?.hasError('required')" class="alert alert-danger">La fecha de ingreso es obligatoria.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <button type="submit" [disabled]="!formulario.valid" class="btn btn1">Actualizar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        
+        </div>
+    </div>
+    

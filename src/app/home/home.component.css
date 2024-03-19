@@ -1,0 +1,32 @@
+.centro {
+    min-height: 100vh;
+    background-color: #1B1E3B;
+}
+
+.btn1 {
+    background-color: rgb(1, 169, 200); 
+    border: 2px solid rgb(1, 169, 200);
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn1:hover{
+    background-color: rgb(3, 147, 173);
+    border: 2px solid rgb(3, 147, 173);
+}
+
+.btn2 {
+    background-color: rgb(209, 203, 143); 
+    border: 2px solid rgb(209, 203, 143);
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: white;
+}
+
+.btn2:hover{
+    background-color: rgb(202, 194, 107);
+    border: 2px solid rgb(202, 194, 107);
+}
