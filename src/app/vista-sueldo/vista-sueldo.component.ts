@@ -72,9 +72,9 @@ calcularSalarioNeto(salario: Salario): void {
     const bonificaciones = parseFloat(salario.bonificaciones);
     const comisiones = parseFloat(salario.comisiones);
 
-    const salarioBruto = salarioBase + bonificaciones;
+    const salarioBruto = salario.salarioBase + salario.bonificaciones;
     const impuestos = salarioBruto * 0.03;
-    let salarioDespuesDeducciones = salarioBruto - impuestos - comisiones;
+    let salarioDespuesDeducciones = salarioBruto - impuestos - salario.comisiones;
 
     this.salarioNeto = salarioDespuesDeducciones;
     console.log(this.salarioNeto)
