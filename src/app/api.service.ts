@@ -134,7 +134,7 @@ export class ApiService {
     formData.append('FechaCarga', FechaCarga);
     formData.append('EmpleadoID', EmpleadoID.toString());
 
-    return this.httpClient.post<any>(this.dbUrl + 'upload-pdf.php', formData);
+    return this.httpClient.post<any>(this.dbUrl + '/upload-pdf.php', formData);
   }
 
   getDocumentosPorEmpleado(EmpleadoID: number): Observable<any> {
