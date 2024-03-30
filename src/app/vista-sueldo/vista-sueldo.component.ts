@@ -74,6 +74,7 @@ calcularSalarioNeto(salario: Salario): void {
 
     this.salarioNeto = salarioDespuesDeducciones;
     console.log(this.salarioNeto)
+    console.log('hola')
     this.salarioNetoFormatted = this.salarioNeto.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
   }
 }
