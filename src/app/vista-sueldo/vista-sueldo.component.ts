@@ -53,8 +53,12 @@ export class VistaSueldoComponent implements OnInit {
 
     this.apiService.obtenerSalarioPorId(this.id).subscribe({
       next: (salario: Salario) => {
-        this.salario = salario;
-        this.calcularSalarioNeto(this.salario);
+        if (salario) {
+          this.salario = salario;
+          this.calcularSalarioNeto(this.salario);
+        } else {
+          console.error('El salario es indefinido.');
+        }
       },
       error: (error) => {
         console.error('Error al cargar datos del salario:', error);
