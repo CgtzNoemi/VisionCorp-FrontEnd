@@ -1,0 +1,174 @@
+<app-barra-nav></app-barra-nav>
+<div class="container col-10 fondo p-4 mt-5 mb-4 rounded">
+    <div class="mb-4">
+        <button class="btn regresar" routerLink="/salarios">
+            <div class="d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-left me-2" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+                </svg>
+                <p class="m-0">Regresar al listado</p>
+            </div>
+        </button>
+    </div>
+
+    <div class="card" *ngIf="empleado">
+        <div class="card-header titulo">
+            Datos generales
+        </div>
+        <div class="card-body cuerpo">
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Nombre(s):</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Nombre" [ngModel]="empleado.Nombre" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Apellidos:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Apellido" [ngModel]="empleado.Apellido"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Teléfono:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Telefono" [ngModel]="empleado.Telefono"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Departamento:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Datos" [ngModel]="empleado.Departamento"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Puesto:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="Puesto" [ngModel]="empleado.Puesto" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Fecha de ingreso:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="FechaIngreso" [ngModel]="empleado.FechaIngreso"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4" *ngIf="salario?.salarioBase">
+        <div class="card-header titulo">
+            Datos salariales
+        </div>
+        <div class="card-body cuerpo">
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Salario base:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="salarioBase" [ngModel]="'$'+salario.salarioBase"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Bonificaciones(Desempeño, Asistencia, etc.):</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="bonificaciones"
+                                [ngModel]="'$'+salario.bonificaciones" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Deducciones(Préstamos, Seguros, etc.):</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="comisiones" [ngModel]="'$'+salario.comisiones"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Salario neto (impuestos incluidos):</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="salarioNeto" [(ngModel)]="salarioNetoFormatted"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Estado de pago:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="estadoPago" [ngModel]="salario.estadoPago"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="form-group">
+                        <label for="info">Fecha de actualización:</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="fechaIngreso" [ngModel]="salario.fechaIngreso"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-4" *ngIf="salario?.salarioBase">
+        <div class="card-header titulo">
+            Historial de cambios
+        </div>
+        <div class="card-body cuerpo">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Sueldo base</th>
+                        <th scope="col">Bonificaciones</th>
+                        <th scope="col">Deducciones</th>
+                        <th scope="col">Estado de pago</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cambio of historial">
+                        <td>{{ cambio.fechaIngreso }}</td>
+                        <td>{{ cambio.salarioBase }}</td>
+                        <td>{{ cambio.bonificaciones }}</td>
+                        <td>{{ cambio.comisiones }}</td>
+                        <td>{{ cambio.estadoPago }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

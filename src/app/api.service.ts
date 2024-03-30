@@ -3,6 +3,8 @@ import { catchError, map } from "rxjs/operators";
 import { HttpClient } from "@angular/common/http";
 import { Empleado } from "./empleado";
 import { Observable, throwError } from "rxjs";
+import { Salario } from "./salarios";
+
 
 @Injectable({
   providedIn: 'root'
@@ -47,14 +49,43 @@ export class ApiService {
       );
   }
 
+  public crearSalario(id: number, salario: Salario) {
+    return this.httpClient.post<any>(`${this.dbUrl}/crearSalario.php?id=${id}`, salario)
+      .pipe(
+        catchError((error) => {
+          console.error('Error al crear el salario:', error);
+          return throwError(() => error);
+        })
+      );
+  }
+
 
   public leerEmpleados() {
     return this.httpClient.get<Empleado[]>(this.dbUrl + '/leerEmpleados.php')
       .pipe(map(empleados => empleados));
   }
 
+  public leerSalarios() {
+    return this.httpClient.get<Salario[]>(this.dbUrl + '/leerSalarios.php')
+      .pipe(map(salarios => salarios));
+  }
+
   obtenerEmpleadoPorId(id: number): Observable<Empleado> {
     return this.httpClient.get<Empleado>(`${this.dbUrl}/ObtenerEmpleadoID.php?id=${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  obtenerSalarioPorId(id: number): Observable<Salario> {
+    return this.httpClient.get<Salario>(`${this.dbUrl}/ObtenerSalarioID.php?id=${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  obtenerHistorialPorId(id: number): Observable<Salario> {
+    return this.httpClient.get<Salario>(`${this.dbUrl}/ObtenerHistorialID.php?id=${id}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -70,6 +101,17 @@ export class ApiService {
       .pipe(
         catchError((error) => {
           console.error('Error al editar el empleado:', error);
+          return throwError(() => error);
+        })
+      );
+  }
+
+  public editarSalario(id: number, salario: Salario) {
+    console.log(id)
+    return this.httpClient.post<any>(`${this.dbUrl}/editarSalario.php?id=${id}`, salario)
+      .pipe(
+        catchError((error) => {
+          console.error('Error al editar salario del empleado:', error);
           return throwError(() => error);
         })
       );
@@ -92,7 +134,7 @@ export class ApiService {
     formData.append('FechaCarga', FechaCarga);
     formData.append('EmpleadoID', EmpleadoID.toString());
 
-    return this.httpClient.post<any>(this.dbUrl + '/upload-pdf.php', formData);
+    return this.httpClient.post<any>(this.dbUrl + 'upload-pdf.php', formData);
   }
 
   getDocumentosPorEmpleado(EmpleadoID: number): Observable<any> {

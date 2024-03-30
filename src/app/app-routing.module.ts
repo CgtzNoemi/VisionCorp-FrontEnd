@@ -9,6 +9,10 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
 import { FormEditarComponent } from './form-editar/form-editar.component';
 import { DetalleEmpleadoComponent } from './detalle-empleado/detalle-empleado.component';
 import { DocumentosComponent } from './documentos/documentos.component';
+import { SalariosComponent } from './salarios/salarios.component';
+import { FormEditarSalarioComponent } from './form-editar-salario/form-editar-salario.component';
+import { FormCrearSalarioComponent } from './form-crear-salario/form-crear-salario.component';
+import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +24,11 @@ const routes: Routes = [
   { path: 'lista-usuarios', component: ListaUsuariosComponent},
   { path: 'editar-empleado/:id', component: FormEditarComponent },
   { path: 'detalle-empleado/:id', component: DetalleEmpleadoComponent},
-  { path: 'subir-documento/:id', component: DocumentosComponent}
+  { path: 'subir-documento/:id', component: DocumentosComponent},
+  { path: 'salarios', component: SalariosComponent},
+  { path: 'editar-salario/:id/:ids', component: FormEditarSalarioComponent},
+  { path: 'crear-salario/:id', component: FormCrearSalarioComponent},
+  { path: 'detalle-sueldo/:id', component: VistaSueldoComponent},
 ];
 
 @NgModule({

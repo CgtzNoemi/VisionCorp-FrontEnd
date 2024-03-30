@@ -16,10 +16,12 @@ import { BarraNavComponent } from './barra-nav/barra-nav.component';
 import { DocumentosComponent } from './documentos/documentos.component';
 import { FormEditarComponent } from './form-editar/form-editar.component';
 import { DetalleEmpleadoComponent } from './detalle-empleado/detalle-empleado.component';
+import { SalariosComponent } from './salarios/salarios.component';
+import { FormEditarSalarioComponent } from './form-editar-salario/form-editar-salario.component';
+import { FormCrearSalarioComponent } from './form-crear-salario/form-crear-salario.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
-
+import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
 
 
 @NgModule({
@@ -35,8 +37,12 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     BarraNavComponent,
     FormEditarComponent,
     DetalleEmpleadoComponent,
-    DocumentosComponent
-  ],
+    DocumentosComponent,
+    SalariosComponent,
+    FormEditarSalarioComponent,
+    FormCrearSalarioComponent,
+    VistaSueldoComponent
+ ],
   imports: [
     BrowserModule,
     AppRoutingModule,

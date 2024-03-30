@@ -26,7 +26,26 @@ export class ListaUsuariosComponent implements OnInit, OnDestroy, AfterViewInit 
   ngOnInit(): void {
     this.dtOptions = {
       language: {
-        url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json',
+        processing: "Procesando...",
+        search: "Buscar:",
+        lengthMenu: "Mostrar _MENU_ elementos",
+        info: "Mostrando desde _START_ al _END_ de _TOTAL_ elementos",
+        infoEmpty: "Mostrando ningún elemento.",
+        infoFiltered: "(filtrado _MAX_ elementos total)",
+        infoPostFix: "",
+        loadingRecords: "Cargando registros...",
+        zeroRecords: "No se encontraron registros",
+        emptyTable: "No hay datos disponibles en la tabla",
+        paginate: {
+          first: "Primero",
+          previous: "Anterior",
+          next: "Siguiente",
+          last: "Último"
+        },
+        aria: {
+          sortAscending: ": Activar para ordenar la tabla en orden ascendente",
+          sortDescending: ": Activar para ordenar la tabla en orden descendente"
+        }
       },
     };
   }
@@ -55,14 +74,14 @@ export class ListaUsuariosComponent implements OnInit, OnDestroy, AfterViewInit 
     this.router.navigate(['/editar-empleado', id]);
   }
 
-  subirDocumento(id: number){
+  subirDocumento(id: number) {
     this.router.navigate(['/subir-documento', id]);
   }
 
   verDetalle(id: number) {
     this.router.navigate(['/detalle-empleado', id]);
   }
-  
+
 
   openModal(id: number) {
     this.empleadoAEliminarId = id;
@@ -88,8 +107,8 @@ export class ListaUsuariosComponent implements OnInit, OnDestroy, AfterViewInit 
         next: (response: any) => {
           console.log(response.mensaje);
           console.log('Borrando empleado con ID:', this.empleadoAEliminarId);
-          this.router.navigateByUrl('/', {replaceUrl: true}).then(() =>
-          this.router.navigate(['/lista-usuarios']));
+          this.router.navigateByUrl('/', { replaceUrl: true }).then(() =>
+            this.router.navigate(['/lista-usuarios']));
         },
         error: (error: any) => {
           console.error('Error al eliminar el empleado:', error);
