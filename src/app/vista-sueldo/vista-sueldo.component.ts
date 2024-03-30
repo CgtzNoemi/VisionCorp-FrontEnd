@@ -38,11 +38,11 @@ export class VistaSueldoComponent implements OnInit {
     });
 
     this.apiService.obtenerHistorialPorId(this.id).subscribe({
-      next: (historial: Salario | Salario[]) => { // Acepta tanto un solo objeto como un arreglo
+      next: (historial: Salario | Salario[]) => { 
         if (Array.isArray(historial)) {
-          this.historial = historial; // Si es un arreglo, asígnalo directamente
+          this.historial = historial; 
         } else {
-          this.historial = [historial]; // Si es un solo objeto, colócalo dentro de un arreglo
+          this.historial = [historial]; 
         }
         console.log(this.historial);
       },
@@ -53,12 +53,8 @@ export class VistaSueldoComponent implements OnInit {
 
     this.apiService.obtenerSalarioPorId(this.id).subscribe({
       next: (salario: Salario) => {
-        if (salario) {
-          this.salario = salario;
-          this.calcularSalarioNeto(this.salario);
-        } else {
-          console.error('El salario es indefinido.');
-        }
+        this.salario = salario;
+        this.calcularSalarioNeto(this.salario);
       },
       error: (error) => {
         console.error('Error al cargar datos del salario:', error);
@@ -67,20 +63,13 @@ export class VistaSueldoComponent implements OnInit {
   }
 
 calcularSalarioNeto(salario: Salario): void {
-  if (salario && typeof salario.salarioBase === 'string' && typeof salario.bonificaciones === 'string' && typeof salario.comisiones === 'string') {
-    const salarioBase = parseFloat(salario.salarioBase);
-    const bonificaciones = parseFloat(salario.bonificaciones);
-    const comisiones = parseFloat(salario.comisiones);
-
     const salarioBruto = salario.salarioBase + salario.bonificaciones;
     const impuestos = salarioBruto * 0.03;
     let salarioDespuesDeducciones = salarioBruto - impuestos - salario.comisiones;
 
     this.salarioNeto = salarioDespuesDeducciones;
     console.log(this.salarioNeto)
-    console.log('hola')
     this.salarioNetoFormatted = this.salarioNeto.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-  }
 }
 
 
