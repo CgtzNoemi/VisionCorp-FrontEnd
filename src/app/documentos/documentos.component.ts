@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Storage, ref, uploadBytes } from '@angular/fire/storage';
+import { Storage, ref, uploadBytes, uploadBytesResumable } from '@angular/fire/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { NgZone } from '@angular/core';
 
 
 
@@ -18,8 +19,9 @@ export class DocumentosComponent {
   time: any;
   pdfFile: File | null = null;
   cargando: boolean = false;
+  progreso: number = 0;
 
-  constructor(private storage: Storage, private route: ActivatedRoute, private router: Router, private apiService: ApiService) { }
+  constructor(private storage: Storage, private route: ActivatedRoute, private router: Router, private apiService: ApiService, private ngZone: NgZone) { }
 
   onDragOver(event: any) {
     event.preventDefault();
@@ -70,45 +72,64 @@ handleFileUpload(files: FileList) {
 }
 
 
-  async uploadPDF() {
-    if (this.pdfFile) {
-      this.cargando = true;
-      const filePath = `documentos/${this.pdfFile.name}`;
-      const fileRef = ref(this.storage, filePath);
+async uploadPDF() {
+  if (this.pdfFile) {
+    this.cargando = true;
+    const filePath = `documentos/${this.pdfFile.name}`;
+    const fileRef = ref(this.storage, filePath);
 
-      uploadBytes(fileRef, this.pdfFile)
-        .then(response => {
-          console.log(response);
-          this.URL = response.metadata.fullPath;
-          this.name = response.metadata.name;
-          this.time = response.metadata.updated;
+    const uploadTask = uploadBytesResumable(fileRef, this.pdfFile);
 
-          this.apiService.subirPDF(this.name, this.URL, this.time, this.EmpleadoID).subscribe({
-            next: (response) => {
-              console.log("Datos subidos a la base de datos.");
-              const alerta = document.getElementById('alerta');
-              if (alerta) {
-                alerta.style.display = 'block';
-              }
+    uploadTask.on('state_changed',
+      (snapshot) => {
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        this.progreso = Math.floor(progress);
+        console.log('Progreso de carga:', this.progreso);
 
-              this.router.navigate(['/detalle-empleado/' + this.EmpleadoID]);
-            },
-            error: (error) => {
-              console.error('Error al cargar los datos: ', error);
+        const intervalo = setInterval(() => {
+          if (this.progreso < 100) {
+    
+          } else {
+            clearInterval(intervalo);
+            this.cargando = false;
+          }
+        }, 100);
+      },
+      (error) => {
+        console.error('Error al cargar el archivo:', error);
+      },
+      () => {
+       
+        const name = this.pdfFile!.name; 
+        const time = new Date().toISOString(); 
+
+        
+        this.apiService.subirPDF(name, filePath, time, this.EmpleadoID).subscribe({
+          next: (response) => {
+            console.log("Datos subidos a la base de datos.");
+            const alerta = document.getElementById('alerta');
+            if (alerta) {
+              alerta.style.display = 'block';
             }
-          });
-        })
-        .catch(error => console.log(error))
-        .finally(() => {
-          this.cargando = false; 
+            this.ngZone.run(() => {
+              this.router.navigate(['/detalle-empleado/' + this.EmpleadoID]);
+            });
+          },
+          error: (error) => {
+            console.error('Error al cargar los datos en la base de datos: ', error);
+          }
         });
 
-    } else {
-      console.error('No se ha seleccionado ningún archivo PDF.');
-      alert('No se ha seleccionado ningún archivo PDF.');
-      
-    }
+        this.cargando = false;
+      }
+    );
+
+  } else {
+    console.error('No se ha seleccionado ningún archivo PDF.');
+    alert('No se ha seleccionado ningún archivo PDF.');
   }
+}
+
 
 }
 
