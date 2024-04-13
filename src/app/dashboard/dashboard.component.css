@@ -1,5 +1,13 @@
-.enlaces-dashboard a {
-    display: block;
-    margin-bottom: 10px; 
-  }
-  
+.boton{
+  background-color: #E9F6F9;
+  border: 2px solid #E9F6F9;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 0 ;
+}
+.boton:hover{
+  background-color: #d2f1f8;
+  border-color: #d2f1f8;
+}

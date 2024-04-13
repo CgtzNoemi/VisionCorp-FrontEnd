@@ -22,6 +22,7 @@ import { FormCrearSalarioComponent } from './form-crear-salario/form-crear-salar
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
+import { CalculadoraISRComponent } from './calculadora-isr/calculadora-isr/calculadora-isr.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
     SalariosComponent,
     FormEditarSalarioComponent,
     FormCrearSalarioComponent,
-    VistaSueldoComponent
+    VistaSueldoComponent,
+    CalculadoraISRComponent,
  ],
   imports: [
     BrowserModule,

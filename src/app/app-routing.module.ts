@@ -13,6 +13,7 @@ import { SalariosComponent } from './salarios/salarios.component';
 import { FormEditarSalarioComponent } from './form-editar-salario/form-editar-salario.component';
 import { FormCrearSalarioComponent } from './form-crear-salario/form-crear-salario.component';
 import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
+import { CalculadoraISRComponent } from './calculadora-isr/calculadora-isr/calculadora-isr.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,8 @@ const routes: Routes = [
   { path: 'editar-salario/:id/:ids', component: FormEditarSalarioComponent},
   { path: 'crear-salario/:id', component: FormCrearSalarioComponent},
   { path: 'detalle-sueldo/:id', component: VistaSueldoComponent},
+  { path: 'calculadoraISR', component: CalculadoraISRComponent},
+
 ];
 
 @NgModule({
