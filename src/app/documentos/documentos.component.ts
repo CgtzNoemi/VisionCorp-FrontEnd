@@ -93,7 +93,7 @@ async uploadPDF() {
             clearInterval(intervalo);
             this.cargando = false;
           }
-        }, 100);
+        }, 10);
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);
