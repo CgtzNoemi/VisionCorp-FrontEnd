@@ -129,7 +129,7 @@ export class DashboardComponent {
     }
     console.log(sumaEdades)
     var promedioEdad = sumaEdades / empleados.length;
-    return promedioEdad;
+    return Math.round(promedioEdad);
   }
 
   calcularPromedioSalario(salarios: Salario[]): number {
