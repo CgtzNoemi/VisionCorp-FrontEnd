@@ -1,0 +1,43 @@
+.enlaces-dashboard a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.btn-css{
+  background-color: #E9F6F9;
+  color: #000;
+  border: 2px solid #E9F6F9;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  border: 0 ;
+}
+.btn-css:hover{
+  color: #fff;
+  background-color: #d2f1f8;
+  border-color: #d2f1f8;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-text {
+  margin-bottom: 1rem;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}

@@ -1,14 +1,50 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand ms-3" routerLink="/home">Inicio</a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login">Iniciar Sesión</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/registro">Registrarse</a>
-        </li>
-      </ul>
+<nav>
+  <input type="checkbox" id="menu">
+
+  <div class="fondo">
+    <div class="contenedor-flex">
+      <label for="menu"> ☰ </label>
+      <div class="contenedor-logo">
+        <img src="/assets/imagenes/1.png" alt="Logo">
+      </div>
     </div>
+  </div>
+  
+  
+  <ul>
+
+    <li class="nav-item">
+      <div class="d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-caret-down-fill me-2" viewBox="0 0 16 16">
+          <path
+            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+        </svg>
+        <a class="nav-link m-0" routerLink="/home">Inicio</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-caret-down-fill me-2" viewBox="0 0 16 16">
+          <path
+            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+        </svg>
+        <a class="nav-link m-0" routerLink="/login">Iniciar sesión</a>
+      </div>
+    </li>
+
+    <li class="nav-item">
+      <div class="d-flex align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-caret-down-fill me-2" viewBox="0 0 16 16">
+          <path
+            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+        </svg>
+        <a class="nav-link" routerLink="/registro">Registrarse</a>
+      </div>
+    </li>
+  </ul>
 </nav>
   

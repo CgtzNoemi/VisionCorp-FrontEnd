@@ -11,3 +11,51 @@
   background-color: #d2f1f8;
   border-color: #d2f1f8;
 }
+  
+.color {
+  background-color:#1B1E3B;
+  border-color: #1B1E3B;
+  color: white;
+}
+.color1 {
+  background-color:#79ADDC;
+  border-color: #79ADDC;
+}
+.color2 {
+  background-color:#cc79e3;
+  border-color: #cc79e3;
+}
+.color3 {
+  background-color:#9ddbc9;
+  border-color: #9ddbc9;
+}
+.color4 {
+  background-color:#f3aacb;
+  border-color: #f3aacb;
+}
+
+.btn1 {
+  background-color: #1B1E3B; 
+  border: 2px solid #1B1E3B;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn1:hover{
+  background-color: #30356c;
+  border: 2px solid #30356c;
+}
+.texto {
+  background-color: #1B1E3B;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 0px;
+}
+
+.borde {
+  border-color: #1B1E3B;
+}

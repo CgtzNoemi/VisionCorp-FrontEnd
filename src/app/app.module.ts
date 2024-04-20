@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +23,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
 import { CalculadoraISRComponent } from './calculadora-isr/calculadora-isr/calculadora-isr.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { CalculadoraISRComponent } from './calculadora-isr/calculadora-isr/calcu
     FormCrearSalarioComponent,
     VistaSueldoComponent,
     CalculadoraISRComponent,
-  ],
+ ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -52,11 +53,12 @@ import { CalculadoraISRComponent } from './calculadora-isr/calculadora-isr/calcu
     FormsModule,
     HttpClientModule,
     DataTablesModule,
-    provideFirebaseApp(() => initializeApp({ "projectId": "documentos-visioncorp", "appId": "1:1021178746880:web:ae01fcd125575a48b2e0e5", "storageBucket": "documentos-visioncorp.appspot.com", "apiKey": "AIzaSyD8Zjl0aUM8YO8_2lnMixSnwjj4nBScC9k", "authDomain": "documentos-visioncorp.firebaseapp.com", "messagingSenderId": "1021178746880" })),
+    NgxChartsModule,
+    provideFirebaseApp(() => initializeApp({"projectId":"documentos-visioncorp","appId":"1:1021178746880:web:ae01fcd125575a48b2e0e5","storageBucket":"documentos-visioncorp.appspot.com","apiKey":"AIzaSyD8Zjl0aUM8YO8_2lnMixSnwjj4nBScC9k","authDomain":"documentos-visioncorp.firebaseapp.com","messagingSenderId":"1021178746880"})),
     provideStorage(() => getStorage()),
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

@@ -1,48 +1,135 @@
 <app-barra-nav></app-barra-nav>
 
-<div class="container p-4">
+
+<div class="container-fluid p-4 mb-0 pb-0">
+  <h1>Dashboard</h1>
   <div class="row">
 
     <div class="col-md-3 mb-4">
-      <div class="card">
-        <div class="card-body text-center">
+      <div class="card h-100">
+        <div class="card-body text-center d-flex flex-column">
           <h5 class="card-title">Registro de empleados</h5>
           <p class="card-text">Administra la lista de empleados registrados.</p>
-          <a href="/lista-usuarios" class="btn boton">Ir al registro</a>
+          <a href="/lista-usuarios" class="btn boton mt-auto">Ir al registro</a>
         </div>
       </div>
     </div>
 
     <div class="col-md-3 mb-4">
-      <div class="card">
-        <div class="card-body text-center">
+      <div class="card h-100">
+        <div class="card-body text-center d-flex flex-column">
           <h5 class="card-title">Registrar empleado nuevo</h5>
           <p class="card-text">Agrega un nuevo empleado al sistema.</p>
-          <a href="/crear-usuario" class="btn boton">Registrar empleado</a>
+          <a href="/crear-usuario" class="btn boton mt-auto">Registrar empleado</a>
         </div>
       </div>
     </div>
 
     <div class="col-md-3 mb-4">
-      <div class="card">
-        <div class="card-body text-center">
+      <div class="card h-100">
+        <div class="card-body text-center d-flex flex-column">
           <h5 class="card-title">Gestión de sueldos</h5>
           <p class="card-text">Administra los sueldos y salarios.</p>
-          <a href="/salarios" class="btn boton">Gestionar sueldos</a>
+          <a href="/salarios" class="btn boton mt-auto">Gestionar sueldos</a>
         </div>
       </div>
     </div>
 
     <div class="col-md-3 mb-4">
-      <div class="card">
-        <div class="card-body text-center">
+      <div class="card h-100">
+        <div class="card-body text-center d-flex flex-column">
           <h5 class="card-title">Calculadora de ISR</h5>
           <p class="card-text">Calcula el Impuesto Sobre la Renta.</p>
-          <a href="/calculadoraISR" class="btn boton">Ir a calculadora</a>
+          <a href="/calculadoraISR" class="btn boton mt-auto">Ir a calculadora</a>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-  
+
+<!-- Tarjetas información-->
+
+<div class="container-fluid ps-4 pe-4 mt-0 pt-4">
+  <h2>Estadísticas del sistema</h2>
+  <div class="row">
+
+    <div class="col-md-3 mb-4">
+      <div class="card color1 h-100">
+        <div class="card-body text-center d-flex flex-column">
+          <h5 class="card-title">{{ totalEmpleados }} </h5>
+          <p class="card-text">Total de empleados</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card color2 h-100">
+        <div class="card-body text-center d-flex flex-column">
+          <h5 class="card-title">{{ promEdad }} años</h5>
+          <p class="card-text">Promedio de edad</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-3 mb-4">
+      <div class="card color3 h-100">
+        <div class="card-body text-center d-flex flex-column">
+          <h5 class="card-title">${{ promSalario }}</h5>
+          <p class="card-text">Salario base promedio</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card color4 h-100">
+        <div class="card-body text-center d-flex flex-column">
+          <h5 class="card-title">${{ promBonificaciones }}</h5>
+          <p class="card-text">Bonificaciones promedio</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div class="container-fluid ps-4 pe-4 mt-0 pt-0">
+  <div class="row">
+
+    <!-- Gráfica 1 -->
+    <div class="col-md-6 mb-4">
+      <div class="card borde">
+        <div class="card-header color">
+          <h5 class="card-title ">Distribución de empleados por departamento</h5>
+        </div>
+        <div class="card-body">
+          <ngx-charts-advanced-pie-chart [view]="view" [results]="single" [gradient]="gradient"
+            (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+          </ngx-charts-advanced-pie-chart>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráfica 2 -->
+    <div class="col-md-6 mb-4">
+      <div class="card borde">
+        <div class="card-header color">
+          <h5 class="card-title">Estado de pago de los empleados</h5>
+        </div>
+        <div class="card-body">
+          <ngx-charts-bar-vertical [view]="view"  [results]="single2" [gradient]="gradient"
+            [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+            (select)="onSelect($event)">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+

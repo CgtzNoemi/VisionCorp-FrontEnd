@@ -37,9 +37,9 @@ svg {
 }
 
 .contenedor-flex {
-	display: flex; /* Establece el contenedor como flexbox */
-	justify-content: space-between; /* Alinea los elementos al extremo derecho */
-	align-items: center; /* Alinea los elementos verticalmente al centro */
+	display: flex; 
+	justify-content: space-between; 
+	align-items: center; 
   }
 
 
@@ -50,13 +50,15 @@ label:hover {
 
 
 input:checked~label {
-	background: #1B1E3B;;
+	background: #1B1E3B;
 }
 
 ul {
+	position: fixed;
 	margin-top: 0;
 	padding: 0;
 	width: 35%;
+	z-index: 1000;
 
 }
 @media screen and (max-width: 768px) {
