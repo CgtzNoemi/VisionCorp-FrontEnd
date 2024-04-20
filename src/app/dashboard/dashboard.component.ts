@@ -101,7 +101,7 @@ export class DashboardComponent {
           },
           {
             "name": "Rechazado",
-            "value": this.conteoEmpleados['Rechazado'] ?? 0
+            "value": this.conteoPago['Rechazado'] ?? 0
           },
           {
             "name": "Cancelado",

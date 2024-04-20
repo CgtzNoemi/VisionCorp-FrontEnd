@@ -24,6 +24,7 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { VistaSueldoComponent } from './vista-sueldo/vista-sueldo.component';
 import { CalculadoraISRComponent } from './calculadora-isr/calculadora-isr/calculadora-isr.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   ],
   providers: [
     provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
