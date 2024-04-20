@@ -24,7 +24,7 @@ export class DashboardComponent {
   conteoPago!: { [estadoPago: string]: number; };
   single!: any[];
   single2!: any[];
-  view: [number, number] = [500, 300];
+  view: [number, number] = [450, 300];
 
   // opciones gráficos
   gradient: boolean = false;
