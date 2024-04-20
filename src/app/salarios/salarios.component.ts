@@ -85,8 +85,9 @@ export class SalariosComponent {
       if (!isNaN(salarioBase) && !isNaN(bonificaciones) && !isNaN(comisiones)) {
         const salarioBruto = salarioBase + bonificaciones;
         let salarioNeto = salarioBruto - comisiones;
-        const impuestos = salarioBruto * 0.03; 
-        salarioNeto -= impuestos; 
+        const impuestos = salarioBruto * 0.03; // Impuestos sobre el salario bruto
+        salarioNeto -= impuestos; // Restar impuestos al salario neto
+        console.log(salarioNeto);
         this.salarioNetoPorEmpleado[id] = salarioNeto;
         return salarioNeto;
       }
