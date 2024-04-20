@@ -54,12 +54,9 @@ input:checked~label {
 }
 
 ul {
-	position: fixed;
 	margin-top: 0;
 	padding: 0;
 	width: 35%;
-	z-index: 1000;
-
 }
 @media screen and (max-width: 768px) {
 	ul {

@@ -40,7 +40,7 @@ export class VistaSueldoComponent implements OnInit {
     this.apiService.obtenerHistorialPorId(this.id).subscribe({
       next: (historial: Salario | Salario[]) => { 
         if (Array.isArray(historial)) {
-          this.historial = historial; 
+          this.historial = historial;
         } else {
           this.historial = [historial]; 
         }
@@ -63,13 +63,19 @@ export class VistaSueldoComponent implements OnInit {
   }
 
 calcularSalarioNeto(salario: Salario): void {
-    const salarioBruto = salario.salarioBase + salario.bonificaciones;
+  if (salario && typeof salario.salarioBase === 'string' && typeof salario.bonificaciones === 'string' && typeof salario.comisiones === 'string') {
+    const salarioBase = parseFloat(salario.salarioBase);
+    const bonificaciones = parseFloat(salario.bonificaciones);
+    const comisiones = parseFloat(salario.comisiones);
+
+    const salarioBruto = salarioBase + bonificaciones;
     const impuestos = salarioBruto * 0.03;
-    let salarioDespuesDeducciones = salarioBruto - impuestos - salario.comisiones;
+    let salarioDespuesDeducciones = salarioBruto - impuestos - comisiones;
 
     this.salarioNeto = salarioDespuesDeducciones;
     console.log(this.salarioNeto)
     this.salarioNetoFormatted = this.salarioNeto.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  }
 }
 
 
